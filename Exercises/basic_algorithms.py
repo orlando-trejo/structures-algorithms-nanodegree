@@ -1,7 +1,7 @@
-# @Author: otrejo
+# @Author: otrejo (code adapted or used from Udacity)
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-07T23:51:11-05:00
+# @Last modified time: 2020-03-08T23:47:41-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -90,7 +90,7 @@ letters = ['a', 'c', 'd', 'f', 'g']
 print(contains('a', letters)) ## True
 print(contains('b', letters)) ## False
 
-# Find start index 
+# Find start index
 def find_start_index(arr, number, start_index, end_index):
     # binary search solution to search for the first index of the array
     if start_index > end_index:
@@ -110,6 +110,30 @@ def find_start_index(arr, number, start_index, end_index):
         return find_start_index(arr, number, mid_index + 1, end_index)
     else:
         return find_start_index(arr, number, start_index, mid_index - 1)
+
+# Find end index
+def find_end_index(arr, number, start_index, end_index):
+    # binary search to find last target index in the array
+    if end_index < start_index:
+        return -1
+
+    mid_index = start_index + (end_index - start_index)//2
+
+    if arr[mid_index] == number:
+        current_end_pos = find_end_index(arr, number, mid_index + 1, end_index)
+        if current_end_pos != -1:
+            end_pos = current_end_pos
+        else:
+            end_pos = mid_index
+        return end_pos
+
+    elif arr[mid_index] < number:
+        return find_end_index(arr, number, mid_index + 1, end_index)
+    else:
+        return find_end_index(arr, number, start_index, mid_index - 1)
+
+
+
 
 # Find first and last index of target in source
 def first_and_last_index(arr, number):
