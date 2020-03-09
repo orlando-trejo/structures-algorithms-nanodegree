@@ -1,7 +1,7 @@
 # @Author: otrejo (code adapted or used from Udacity)
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-08T23:47:41-04:00
+# @Last modified time: 2020-03-09T16:40:53-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -151,8 +151,10 @@ def first_and_last_index(arr, number):
     # TODO: Write your first_and_last function here
     # Note that you may want to write helper functions to find the start
     # index and the end index
+    first_index = find_start_index(arr, number, 0, len(arr) - 1)
+    last_index = find_end_index(arr, number, 0, len(arr) - 1)
 
-    return [find_first(number, arr), find_last(number, arr)]
+    return [first_index, last_index]
 
 # Test function
 def test_function(test_case):
@@ -168,8 +170,6 @@ def test_function(test_case):
 input_list = [1]
 number = 1
 solution = [0, 0]
-print(find_first(number, input_list))
-print(find_last(number, input_))
 test_case_1 = [input_list, number, solution]
 test_function(test_case_1)
 
