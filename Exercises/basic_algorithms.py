@@ -1,7 +1,7 @@
 # @Author: otrejo (code adapted or used from Udacity)
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-09T16:40:53-04:00
+# @Last modified time: 2020-03-10T11:04:57-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -190,3 +190,53 @@ number = 6
 solution = [-1, -1]
 test_case_4 = [input_list, number, solution]
 test_function(test_case_4)
+
+# Tries
+class TrieNode(object):
+    def __init__(self):
+        self.is_word = False
+        self.children = {}
+
+class Trie(object):
+    def __init__(self):
+        self.root = TrieNode()
+
+    def add(self, word):
+        """
+        Add `word` to trie
+        """
+        current_node = self.root
+        for char in word:
+            if char not in current_node.children:
+                current_node.children[char] = TrieNode()
+            current_node = current_node.children[char]
+
+        current_node.is_word = True
+
+
+    def exists(self, word):
+        """
+        Check if word exists in trie
+        """
+        current_node = self.root
+        for char in word:
+            if char not in current_node.children:
+                return False
+
+            current_node = current_node.children[char]
+        return current_node.is_word
+
+word_list = ['apple', 'bear', 'goo', 'good', 'goodbye', 'goods', 'goodwill', 'gooses'  ,'zebra']
+word_trie = Trie()
+
+# Add words
+for word in word_list:
+    word_trie.add(word)
+
+# Test words
+test_words = ['bear', 'goo', 'good', 'goos']
+for word in test_words:
+    if word_trie.exists(word):
+        print('"{}" is a word.'.format(word))
+    else:
+        print('"{}" is not a word.'.format(word))
