@@ -1,7 +1,7 @@
 # @Author: otrejo (code adapted or used from Udacity)
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-10T12:33:59-04:00
+# @Last modified time: 2020-03-10T12:49:13-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -374,3 +374,23 @@ for _ in range(2):
 print('size of heap: {}'.format(heap.size()))
 print('Call remove: {}'.format(heap.remove()))
 print('Call is_empty: {}'.format(heap.is_empty()))
+
+# Node class for Red-Black Tree
+class Node(object):
+    def __init__(self, value, parent, color):
+        self.value = value
+        self.left = None
+        self.right = None
+        self.parent = parent
+        self.color = color
+
+# Red-Black Tree Class
+class RedBlackTree(object):
+    def __init__(self, root):
+        self.root = Node(root, None, 'red')
+
+    def insert(self, new_val):
+        pass
+
+    def remove(self, find_val):
+        return False
