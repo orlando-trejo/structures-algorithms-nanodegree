@@ -1,7 +1,7 @@
 # @Author: otrejo (code adapted or used from Udacity)
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-10T12:49:13-04:00
+# @Last modified time: 2020-03-11T23:02:45-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -390,7 +390,19 @@ class RedBlackTree(object):
         self.root = Node(root, None, 'red')
 
     def insert(self, new_val):
-        pass
+        self.insert_helper(self.root, new_val)
+
+    def insert_helper(self, current, new_val):
+        if current.value < new_value:
+            if current.right:
+                insert_helper(current.right, current, new_val)
+            else:
+                current.right = Node(new_val, current, 'red')
+        else:
+            if current.left:
+                insert_helper(current.left, current, new_val)
+            else:
+                current.left = Node(new_val, current, 'red')
 
     def remove(self, find_val):
         return False
