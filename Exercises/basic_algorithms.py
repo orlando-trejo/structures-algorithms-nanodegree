@@ -1,7 +1,7 @@
-# @Author: otrejo (code adapted or used from Udacity)
+# @Author: code adapted or used from Udacity 
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-11T23:02:45-04:00
+# @Last modified time: 2020-03-12T22:26:14-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -398,11 +398,27 @@ class RedBlackTree(object):
                 insert_helper(current.right, current, new_val)
             else:
                 current.right = Node(new_val, current, 'red')
+                return current.right
         else:
             if current.left:
                 insert_helper(current.left, current, new_val)
             else:
                 current.left = Node(new_val, current, 'red')
+                return current.left
+
+    def rebalance(self, node):
+        # Case 1
+        if node.parent == None:
+            return
+        # Case 2
+        if node.parent.color = 'black':
+            return
+        # Case 3
+        if pibling(node).color == 'red':
+            pibling(node).color == 'black'
+            node.parent.color == 'black'
+            grandparent(node).color == 'red'
+            self.rebalance(grandparent(node))
 
     def remove(self, find_val):
         return False
