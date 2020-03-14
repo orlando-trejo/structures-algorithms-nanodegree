@@ -1,7 +1,7 @@
-# @Author: code adapted or used from Udacity 
+# @Author: code adapted or used from Udacity
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-12T22:26:14-04:00
+# @Last modified time: 2020-03-13T22:33:50-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -419,6 +419,12 @@ class RedBlackTree(object):
             node.parent.color == 'black'
             grandparent(node).color == 'red'
             self.rebalance(grandparent(node))
+        # Case 4
+        gp = grandparent(node)
+        if gp.left and node == gp.left.right:
+            self.rotate_left(parent(node))
+        if gp.right and node = gp.right.left:
+            self.rotate_right(parent(node))
 
     def remove(self, find_val):
         return False
