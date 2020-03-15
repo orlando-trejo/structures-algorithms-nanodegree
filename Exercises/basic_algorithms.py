@@ -1,7 +1,7 @@
 # @Author: code adapted or used from Udacity
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-13T22:33:50-04:00
+# @Last modified time: 2020-03-14T22:10:42-04:00
 
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
@@ -425,6 +425,44 @@ class RedBlackTree(object):
             self.rotate_left(parent(node))
         if gp.right and node = gp.right.left:
             self.rotate_right(parent(node))
+
+    # Rotate left method
+    def rotate_left(self, node):
+        # Original parent node
+        p = node.parent
+        # Node moving up
+        node_moving_up = node.right
+        # After moving, right child is left child
+        node.right = node_moving_up.left
+        # Node moves down to be left child
+        node_moving_up.left = node
+        node.parent = node_moving_up
+        # Connect to sub-tree parent, node may have been root
+        if p != None:
+            if node == p.left:
+                p.left = node_moving_up
+            else:
+                p.right = node_moving_up
+        node_moving_up.parent = p
+
+    # Rotate right method
+    def rotate_right(self, node):
+        # Original parent node
+        p = node.parent
+        # Node moving up
+        node_moving_up = node.left
+        # After moving, left child is right child
+        node.left = node_moving_up.right
+        # Node moves down to be right child
+        node_moving_up.right = node
+        node.parent = node_moving_up
+        # Connect to sub-tree parent, node may have been root
+        if p != None:
+            if node == p.left:
+                p.left = node_moving_up
+            else:
+                p.right = node_moving_up
+        node_moving_up.parent = p
 
     def remove(self, find_val):
         return False
