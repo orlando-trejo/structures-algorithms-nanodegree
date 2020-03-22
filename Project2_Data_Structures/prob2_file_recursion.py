@@ -1,6 +1,13 @@
+# @Author: otrejo
+# @Date:   2020-03-05T00:12:05-05:00
+# @Last modified by:   otrejo
+# @Last modified time: 2020-03-21T21:58:45-04:00
+
+
+
 import os
 
-def find_files(suffix, path):
+def find_files(suffix, path, path_files):
     """
     Find all files beneath path with file name suffix.
 
@@ -16,11 +23,13 @@ def find_files(suffix, path):
     Returns:
        a list of paths
     """
+    #path_files = []
     for entry in (os.listdir(path)):
         if entry.endswith(".c"):
-            print(entry)
+            path_files.append(path)
         elif os.path.isdir(path +'/'+ entry):
-            find_files('.c', path +'/'+ entry)
+            find_files('.c', path +'/'+ entry, path_files)
+    #print(path_files)
+    return path_files
 
-
-find_files(".c", "/Users/otrejo/Downloads/testdir")
+print(find_files(".c", "testdir", []))
