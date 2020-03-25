@@ -1,3 +1,10 @@
+# @Author: otrejo
+# @Date:   2020-03-05T00:12:05-05:00
+# @Last modified by:   otrejo
+# @Last modified time: 2020-03-24T20:45:44-04:00
+
+
+
 class Group(object):
     def __init__(self, _name):
         self.name = _name
@@ -40,3 +47,7 @@ def is_user_in_group(user, group):
       group(class:Group): group to check user membership against
     """
     return (user in group.get_users())
+
+print(is_user_in_group(sub_child_user, sub_child))
+print(is_user_in_group(sub_child_user, parent))
+print(is_user_in_group(child, sub_child))
