@@ -1,3 +1,10 @@
+# @Author: otrejo
+# @Date:   2020-03-05T00:12:05-05:00
+# @Last modified by:   otrejo
+# @Last modified time: 2020-03-25T22:17:04-04:00
+
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -115,3 +122,35 @@ for i in element_2:
 
 print (union(linked_list_3,linked_list_4))
 print (intersection(linked_list_3,linked_list_4))
+
+# Test case 3
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+element_1 = []
+element_2 = [1,7,8,9,11,21,1]
+
+for i in element_1:
+    linked_list_5.append(i)
+
+for i in element_2:
+    linked_list_6.append(i)
+
+print (union(linked_list_5,linked_list_6))
+print (intersection(linked_list_5,linked_list_6))
+
+# Test case 4
+linked_list_7 = LinkedList()
+linked_list_8 = LinkedList()
+
+element_1 = []
+element_2 = []
+
+for i in element_1:
+    linked_list_5.append(i)
+
+for i in element_2:
+    linked_list_6.append(i)
+
+print (union(linked_list_7,linked_list_8))
+print (intersection(linked_list_7,linked_list_8))
