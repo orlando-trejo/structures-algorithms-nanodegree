@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-03-05T00:12:05-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-25T22:17:04-04:00
+# @Last modified time: 2020-03-26T20:54:51-04:00
 
 
 
@@ -47,6 +47,9 @@ class LinkedList:
 
 
 def union(llist1, llist2):
+    '''Input: two linked lists
+       Output: union linked list
+    '''
     d = {}
     head1 = llist1.head
     while head1:
@@ -68,11 +71,18 @@ def union(llist1, llist2):
             d[value] = 1
             head2 = head2.next
 
-    return list(d.keys())
+    # Create LinkedList
+    llist = LinkedList()
+    for i in list(d.keys()):
+        llist.append(i)
 
+    return llist
 
 
 def intersection(llist1, llist2):
+    '''Input: two linked list
+       Output: intersection linked list
+    '''
     head1 = llist1.head
     intrs = []
     while head1:
@@ -84,13 +94,18 @@ def intersection(llist1, llist2):
                 intrs.append(value1)
             head2 = head2.next
         head1 = head1.next
-    return set(intrs)
+
+    # Create LinkedList
+    llist = LinkedList()
+    for i in set(intrs):
+        llist.append(i)
+
+    return llist
 
 
 
 
 # Test case 1
-
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
 
@@ -104,10 +119,11 @@ for i in element_2:
     linked_list_2.append(i)
 
 print (union(linked_list_1,linked_list_2))
+# 3->2->4->35->6->65->21->32->9->1->11->
 print (intersection(linked_list_1,linked_list_2))
+# 4->21->6->
 
 # Test case 2
-
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
 
@@ -121,7 +137,9 @@ for i in element_2:
     linked_list_4.append(i)
 
 print (union(linked_list_3,linked_list_4))
+# 3->2->4->35->6->65->23->1->7->8->9->11->21->
 print (intersection(linked_list_3,linked_list_4))
+# Empty
 
 # Test case 3
 linked_list_5 = LinkedList()
@@ -137,7 +155,9 @@ for i in element_2:
     linked_list_6.append(i)
 
 print (union(linked_list_5,linked_list_6))
+# 1->7->8->9->11->21->
 print (intersection(linked_list_5,linked_list_6))
+# Empty
 
 # Test case 4
 linked_list_7 = LinkedList()
@@ -153,4 +173,6 @@ for i in element_2:
     linked_list_6.append(i)
 
 print (union(linked_list_7,linked_list_8))
+# Empty
 print (intersection(linked_list_7,linked_list_8))
+# Empty
