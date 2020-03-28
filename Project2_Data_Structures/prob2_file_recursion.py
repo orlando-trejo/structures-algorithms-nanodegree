@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-03-05T00:12:05-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-21T21:58:45-04:00
+# @Last modified time: 2020-03-27T20:54:24-04:00
 
 
 
@@ -25,11 +25,19 @@ def find_files(suffix, path, path_files):
     """
     #path_files = []
     for entry in (os.listdir(path)):
-        if entry.endswith(".c"):
+        if entry.endswith(suffix):
             path_files.append(path)
         elif os.path.isdir(path +'/'+ entry):
-            find_files('.c', path +'/'+ entry, path_files)
+            find_files(suffix, path +'/'+ entry, path_files)
     #print(path_files)
     return path_files
 
+# Test 1
 print(find_files(".c", "testdir", []))
+# ['testdir/subdir1', 'testdir/subdir3/subsubdir1', 'testdir/subdir5', 'testdir']
+# Test 2
+print(find_files(".py", "testdir", []))
+# []
+# Test 3
+print(find_files(".h", "testdir", []))
+# ['testdir/subdir1', 'testdir/subdir3/subsubdir1', 'testdir/subdir5', 'testdir']

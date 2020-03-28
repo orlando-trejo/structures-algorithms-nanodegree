@@ -1,3 +1,10 @@
+# @Author: otrejo
+# @Date:   2020-03-05T00:12:05-05:00
+# @Last modified by:   otrejo
+# @Last modified time: 2020-03-27T21:14:17-04:00
+
+
+
 from collections import OrderedDict
 
 class LRU_Cache(object):
@@ -31,19 +38,26 @@ our_cache.set(1, 1);
 our_cache.set(2, 2);
 our_cache.set(3, 3);
 our_cache.set(4, 4);
+# Test 1
 print(our_cache.cache)
+# OrderedDict([(1, 1), (2, 2), (3, 3), (4, 4)])
 
-
-our_cache.get(1)       # returns 1
-our_cache.get(2)       # returns 2
-print(our_cache.get(9))      # returns -1 because 9 is not present in the cache
+# Test 2
+print(our_cache.get(1))
+# returns 1
+print(our_cache.get(2) )
+# returns 2
+print(our_cache.get(9))
+# returns -1 because 9 is not present in the cache
 print(our_cache.cache)
+# OrderedDict([(3, 3), (4, 4), (1, 1), (2, 2)]
 
-
+# Test 3
 our_cache.set(5, 5)
 our_cache.set(6, 6)
 print(our_cache.cache)
-
-
+# OrderedDict([(4, 4), (1, 1), (2, 2), (5, 5), (6, 6)])
 print(our_cache.get(3))
+# -1
 print(our_cache.cache)
+# OrderedDict([(4, 4), (1, 1), (2, 2), (5, 5), (6, 6)])
