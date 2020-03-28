@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-03-05T00:12:05-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-23T22:27:08-04:00
+# @Last modified time: 2020-03-27T20:48:36-04:00
 
 
 
@@ -56,16 +56,22 @@ if __name__ == "__main__":
     codes = {}
 
     a_great_sentence = "The bird is the word"
-
+    # Test 1
     print ("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
+    # 69
     print ("The content of the data is: {}\n".format(a_great_sentence))
+    # "The bird is the word"
 
     encoded_data, tree = huffman_encoding(a_great_sentence)
-
+    # Test 2
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
+    # 40
     print ("The content of the encoded data is: {}\n".format(encoded_data))
+    # "00000010100110000000100010000100000110001000000001100000000010100110000000000100000000000100001000001"
 
     decoded_data = huffman_decoding(encoded_data, tree)
-
+    # Test 3
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+    # 69
     print ("The content of the encoded data is: {}\n".format(decoded_data))
+    # "The bird is the word"
