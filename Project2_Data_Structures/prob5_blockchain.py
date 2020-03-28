@@ -1,3 +1,10 @@
+# @Author: otrejo
+# @Date:   2020-03-05T00:12:05-05:00
+# @Last modified by:   otrejo
+# @Last modified time: 2020-03-27T20:27:09-04:00
+
+
+
 import hashlib
 import time
 
@@ -15,9 +22,9 @@ class Block:
         sha.update(hash_str.encode('utf-8'))
         return sha.hexdigest()
 
-def get_utc_time():
-    ts = time.gmtime()
-    return (time.strftime("%Y-%m-%d %H:%M:%S", ts))
+def get_time():
+    timestamp = time.gmtime()
+    return (time.strftime("%Y-%m-%d %H:%M:%S", timestamp))
 
 
 class BlockChain(object):
@@ -36,18 +43,29 @@ class BlockChain(object):
             self.last = Block(timestamp, data, 0)
             self.last.previous_hash = current_last
 
+# Test 1
+block_1 = Block(get_time(), "Block 1", 0)
+block_2 = Block(get_time(), "Block 2", block_1)
+block_3 = Block(get_time(), "Block 3", block_2)
 
-block0 = Block(get_utc_time(), "Some Information", 0)
-block1 = Block(get_utc_time(), "Another Information", block0)
-block2 = Block(get_utc_time(), "Some more Information", block1)
+print(block_1.data)
+# "Block 1"
+print(block_3.timestamp)
+# Time in "%Y-%m-%d %H:%M:%S" format
+print(block_3.previous_hash.data)
+# "Block 2"
 
-print(block0.data)
-print(block0.hash)
-print(block0.timestamp)
-print(block1.previous_hash.data)
-
+# Test 2
 temp = BlockChain()
-temp.add_block(get_utc_time(), "Some Information")
-temp.add_block(get_utc_time(), "Another Information")
+print(temp.head)
+# None
+print(temp.last)
+# None
+
+# Test 3
+temp.add_block(get_time(), "Hello World")
+temp.add_block(get_time(), "Blockchain!")
 print(temp.last.data)
+# "Blockchain!"
 print(temp.last.previous_hash.data)
+# "Hello World!"
