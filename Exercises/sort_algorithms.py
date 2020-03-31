@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-03-29T22:22:40-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-29T22:24:05-04:00
+# @Last modified time: 2020-03-30T21:40:21-04:00
 
 wakeup_times = [16,49,3,12,56,49,55,22,13,46,19,55,46,13,25,56,9,48,45]
 def bubble_sort_1(l):
@@ -38,7 +38,48 @@ def bubble_sort_2(l):
 
             l[j] = (prev_h, prev_m)
             l[j-1] = (this_h, this_m)
-        
+
 
 bubble_sort_2(sleep_times)
 print ("Pass" if (sleep_times == [(24,23), (24,13), (24,3), (23,20), (22,5), (21,58), (21,55)]) else "Fail")
+
+def mergesort(items):
+
+    if len(items) <= 1:
+        return items
+
+    mid = len(items) // 2
+    left = items[:mid]
+    right = items[mid:]
+
+    left = mergesort(left)
+    right = mergesort(right)
+
+    return merge(left, right)
+
+def merge(left, right):
+
+    merged = []
+    left_index = 0
+    right_index = 0
+
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] > right[right_index]:
+            merged.append(right[right_index])
+            right_index += 1
+        else:
+            merged.append(left[left_index])
+            left_index += 1
+
+    merged += left[left_index:]
+    merged += right[right_index:]
+
+    return merged
+
+
+test_list_1 = [8, 3, 1, 7, 0, 10, 2]
+test_list_2 = [1, 0]
+test_list_3 = [97, 98, 99]
+print('{} to {}'.format(test_list_1, mergesort(test_list_1)))
+print('{} to {}'.format(test_list_2, mergesort(test_list_2)))
+print('{} to {}'.format(test_list_3, mergesort(test_list_3)))
