@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-03-29T22:22:40-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-30T21:40:21-04:00
+# @Last modified time: 2020-04-01T22:43:20-04:00
 
 wakeup_times = [16,49,3,12,56,49,55,22,13,46,19,55,46,13,25,56,9,48,45]
 def bubble_sort_1(l):
@@ -67,6 +67,7 @@ def merge(left, right):
         if left[left_index] > right[right_index]:
             merged.append(right[right_index])
             right_index += 1
+            print(right_index)
         else:
             merged.append(left[left_index])
             left_index += 1
@@ -79,7 +80,7 @@ def merge(left, right):
 
 test_list_1 = [8, 3, 1, 7, 0, 10, 2]
 test_list_2 = [1, 0]
-test_list_3 = [97, 98, 99]
+test_list_3 = [54, 99, 49, 22, 37, 18, 22, 90, 86, 33]
 print('{} to {}'.format(test_list_1, mergesort(test_list_1)))
 print('{} to {}'.format(test_list_2, mergesort(test_list_2)))
 print('{} to {}'.format(test_list_3, mergesort(test_list_3)))
