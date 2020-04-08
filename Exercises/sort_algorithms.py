@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-03-29T22:22:40-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-01T22:43:20-04:00
+# @Last modified time: 2020-04-07T23:38:45-04:00
 
 wakeup_times = [16,49,3,12,56,49,55,22,13,46,19,55,46,13,25,56,9,48,45]
 def bubble_sort_1(l):
@@ -84,3 +84,65 @@ test_list_3 = [54, 99, 49, 22, 37, 18, 22, 90, 86, 33]
 print('{} to {}'.format(test_list_1, mergesort(test_list_1)))
 print('{} to {}'.format(test_list_2, mergesort(test_list_2)))
 print('{} to {}'.format(test_list_3, mergesort(test_list_3)))
+
+# Case sort
+def case_sort(string):
+    """
+    Here are some pointers on how the function should work:
+    1. Sort the string
+    2. Create an empty output list
+    3. Iterate over original string
+        if the character is lower-case:
+            pick lower-case character from sorted string to place in output list
+        else:
+            pick upper-case character from sorted string to place in output list
+
+    Note: You can use Python's inbuilt ord() function to find the ASCII value of a character
+    """
+    # Sort string
+    sort_string = sorted(string)
+    index = 0
+    for letter in sort_string:
+        num = ord(letter)
+        if num >= 97:
+            break
+        index += 1
+
+    lower = sort_string[index:]
+    upper = sort_string[:index]
+
+    # Create output
+    output = []
+
+    # Iterate over string
+    i_lower = 0
+    i_upper = 0
+    for char in string:
+        if ord(char) >= 97:
+            output.append(lower[i_lower])
+            i_lower += 1
+
+        else:
+            output.append(upper[i_upper])
+            i_upper += 1
+
+    return ''.join(output)
+
+def test_function(test_case):
+    test_string = test_case[0]
+    solution = test_case[1]
+
+    if case_sort(test_string) == solution:
+        print("Pass")
+    else:
+        print("False")
+
+test_string = 'fedRTSersUXJ'
+solution = "deeJRSfrsTUX"
+test_case = [test_string, solution]
+test_function(test_case)
+
+test_string = "defRTSersUXI"
+solution = "deeIRSfrsTUX"
+test_case = [test_string, solution]
+test_function(test_case)
