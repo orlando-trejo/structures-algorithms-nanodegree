@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-11T23:28:21-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-12T23:21:45-04:00
+# @Last modified time: 2020-04-14T23:59:22-04:00
 
 
 def bubble_sort_1(l):
@@ -47,4 +47,5 @@ print(rearrange_digits([1, 2, 3, 4, 5]))
 
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+test_case = [[4, 6, 4, 5, 9, 8], [964, 852]]
 test_function(test_case)
