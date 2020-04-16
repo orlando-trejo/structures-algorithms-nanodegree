@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-11T23:47:12-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-11T23:47:20-04:00
+# @Last modified time: 2020-04-15T23:33:53-04:00
 
 
 
@@ -12,7 +12,18 @@ def sort_012(input_list):
     Args:
        input_list(list): List to be sorted
     """
-    pass
+    zeros = []
+    ones = []
+    twos = []
+    for i in input_list:
+        if i == 0:
+            zeros.append(0)
+        elif i == 1:
+            ones.append(1)
+        else:
+            twos.append(2)
+
+    return zeros + ones + twos 
 
 def test_function(test_case):
     sorted_array = sort_012(test_case)
