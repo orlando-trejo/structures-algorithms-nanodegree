@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-16T23:49:35-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-16T23:49:59-04:00
+# @Last modified time: 2020-04-17T18:29:41-04:00
 
 
 
@@ -12,7 +12,23 @@ def get_min_max(ints):
     Args:
        ints(list): list of integers containing one or more integers
     """
-   pass
+    # Compare first two integers
+    if ints[0] < ints[1]:
+        min = ints[0]
+        max = ints[1]
+    else:
+        min = ints[1]
+        max = ints[0]
+
+    for i in range(2, len(ints)):
+        if ints[i] < min:
+            min = ints[i]
+        elif ints[i] > max:
+            max = ints[i]
+        else:
+            continue
+
+    return (min, max)
 
 ## Example Test Case of Ten Integers
 import random
