@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-11T23:47:12-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-15T23:33:53-04:00
+# @Last modified time: 2020-04-16T23:47:53-04:00
 
 
 
@@ -23,7 +23,7 @@ def sort_012(input_list):
         else:
             twos.append(2)
 
-    return zeros + ones + twos 
+    return zeros + ones + twos
 
 def test_function(test_case):
     sorted_array = sort_012(test_case)
