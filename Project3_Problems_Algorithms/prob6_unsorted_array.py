@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-16T23:49:35-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-17T18:29:41-04:00
+# @Last modified time: 2020-04-18T23:01:11-04:00
 
 
 
@@ -36,4 +36,9 @@ import random
 l = [i for i in range(0, 10)]  # a list containing 0 - 9
 random.shuffle(l)
 
-print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
+print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail") # Pass
+print ("Pass" if ((0, 8) == get_min_max(l)) else "Fail") # Fail
+
+l = [0, 0, 0, 0, 0]
+print ("Pass" if ((0, 0) == get_min_max(l)) else "Fail") # Pass
+print ("Pass" if ((0, 1) == get_min_max(l)) else "Fail") # Fail 
