@@ -1,8 +1,36 @@
 # @Author: code adapted or used from Udacity
 # @Date:   2020-03-05T17:23:35-05:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-03-15T22:37:51-04:00
+# @Last modified time: 2020-04-24T00:15:33-04:00
 
+def binary_search(array, target):
+    '''Write a function that implements the binary search algorithm using iteration
+
+    args:
+      array: a sorted array of items of the same type
+      target: the element you're searching for
+
+    returns:
+      int: the index of the target, if found, in the source
+      -1: if the target is not found
+    '''
+    count = 0
+    while len(array) > 0:
+        count += 1
+        print(array)
+        indx = len(array)//2
+        if array[indx] == target:
+            print(count)
+            return sum(range(count+1))
+        else:
+            if array[indx] > target:
+                array = array[:indx]
+            else:
+                array = array[indx:]
+
+
+    return -1
+    
 # Recursive binary search using recursion
 def binary_search_recursive(array, target):
     '''Write a function that implements the binary search algorithm using recursion
