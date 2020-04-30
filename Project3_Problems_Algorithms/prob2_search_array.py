@@ -1,7 +1,7 @@
 #@Author: littlebigchamps
 #@Date:   2020-04-08T21:23:48-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-22T21:29:23-04:00
+# @Last modified time: 2020-04-29T23:51:00-04:00
 
 def rotated_array_search(input_list, number):
     """
@@ -32,10 +32,9 @@ def rotated_array_recursion(input_list, number, start_index, end_index):
     if mid_element == number:
         return mid_index
 
-    left_index = rotated_array_recursion(input_list, number, start_index, mid_index-1)
-    right_index = rotated_array_recursion(input_list, number, mid_index+1, end_index)
-
-    return max(left_index, right_index)
+    if input_list[start_index]:
+    else:
+        return
 
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
