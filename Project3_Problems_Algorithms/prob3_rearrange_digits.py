@@ -1,19 +1,43 @@
 # @Author: otrejo
 # @Date:   2020-04-11T23:28:21-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-18T22:54:05-04:00
+# @Last modified time: 2020-05-02T19:19:46-04:00
 
 
-def bubble_sort_1(l):
-    # TODO: Implement bubble sort solution
-    for i in range(len(l)):
-        for j in range(1, len(l)):
-            if l[j-1] < l[j]:
-                o_j = l[j]
-                l[j] = l[j-1]
-                l[j-1] = o_j
-    return l
+# Implement quick sort algorithm w/ recursion
+def quick_sort(input_list):
+    return quick_sort_recursion(input_list, 0, len(input_list)-1)
 
+def quick_sort_recursion(input_list, start_index, end_index):
+
+    # Base case
+    if start_index > end_index:
+        return
+
+    pivot_index = partial_sort(input_list, start_index, end_index)
+
+    quick_sort_recursion(input_list, start_index, pivot_index-1)
+    quick_sort_recursion(input_list, pivot_index+1, end_index)
+
+def partial_sort(input_list, start_index, end_index):
+    right_index = end_index
+    pivot_index = start_index
+    pivot_value = input_list[pivot_index]
+
+    while (pivot_index != right_index):
+
+        item = input_list[right_index]
+
+        if item <= pivot_value:
+            right_index -= 1
+            continue
+
+        input_list[right_index] = input_list[pivot_index+1]
+        input_list[pivot_index+1] = pivot_value
+        input_list[pivot_index] = item
+        pivot_index += 1
+
+    return pivot_index
 
 def rearrange_digits(input_list):
     """
@@ -24,7 +48,8 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
-    sorted_list = bubble_sort_1(input_list)
+    quick_sort(input_list)
+    print(input_list)
     num1 = ''
     num2 = ''
     for i in range(len(input_list)):
@@ -49,3 +74,5 @@ test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
 test_function(test_case) # Pass
 test_case = [[4, 6, 4, 5, 9, 8], [964, 852]]
 test_function(test_case) # Fail
+
+# Edge cases
