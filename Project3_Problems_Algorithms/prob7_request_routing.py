@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-17T18:33:31-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-04-19T14:46:26-04:00
+# @Last modified time: 2020-05-02T20:36:41-04:00
 
 
 
@@ -99,3 +99,11 @@ print(router.lookup("/home")) # should print 'not found handler' or None if you 
 print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+
+# Edge cases
+print(router.lookup("//home")) # Should print None
+print(router.lookup("")) # Should print root handler
+print(router.lookup("/home/home/home")) # Should print None
+router.add_handler("/home/hello", "hello handler")  # add a route
+print(router.lookup("/home/hello")) # Should print hello handler
+print(router.lookup("/home/hello/about")) # Should print None
