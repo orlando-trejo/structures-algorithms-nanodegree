@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-04-11T23:28:21-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-02T19:19:46-04:00
+# @Last modified time: 2020-05-02T19:41:57-04:00
 
 
 # Implement quick sort algorithm w/ recursion
@@ -76,3 +76,7 @@ test_case = [[4, 6, 4, 5, 9, 8], [964, 852]]
 test_function(test_case) # Fail
 
 # Edge cases
+test_case = [[1, 1, 1, 1, 1, 1, 1], [1111, 111]]
+test_function(test_case) # Pass
+test_case = [[9,7,5,3,1,3,2,4,5],[95431, 7532]]
+test_function(test_case) # Pass
