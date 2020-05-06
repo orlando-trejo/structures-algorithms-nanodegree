@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-05T20:42:34-04:00
+# @Last modified time: 2020-05-05T20:56:09-04:00
 
 # Do a depth first search on a graph
 
@@ -86,3 +86,19 @@ Graph.dfs_recursion_start = dfs_recursion_start
 Graph.dfs_recursion = dfs_recursion
 
 graph1.dfs_recursion_start(nodeG)
+
+# Implment BFS search
+def bfs_search(root_node, search_value):
+    visited = list()
+    queue = [root_node]
+
+    while len(queue) > 0:
+        node = queue.pop(0)
+        visited.append(node)
+
+    if node.value == search_value:
+        return node
+
+    for child in node.children:
+        if child not in visited:
+            queue.append(child)
