@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:23:32-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-05T19:39:40-04:00
+# @Last modified time: 2020-05-05T20:09:59-04:00
 
 
 
@@ -157,6 +157,7 @@ def pre_order_with_stack(tree, debug_mode=False):
             node = node.get_right_child()
             visit_order.append(node.get_value())
             state = State(node)
+            stack.push(state)
 
         else:
             stack.pop()

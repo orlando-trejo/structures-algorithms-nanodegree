@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-04T23:13:15-04:00
+# @Last modified time: 2020-05-05T20:15:00-04:00
 
 # Do a depth first search on a graph
 
@@ -49,3 +49,18 @@ graph1.add_edge(nodeR, nodeP)
 graph1.add_edge(nodeH, nodeG)
 graph1.add_edge(nodeH, nodeP)
 graph1.add_edge(nodeS, nodeR)
+
+def dfs_search(root_node, search_value):
+    visit_odrer = list()
+    stack = [root_node]
+
+    while len(stack) > 0:
+        node = stack.pop()
+        visit_odrer.append(node)
+
+        if node.value() == search_value:
+            return node
+
+        for child in node.children:
+            if child not in visit_order:
+                stack.append(child)
