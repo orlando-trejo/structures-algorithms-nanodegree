@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-05T20:15:00-04:00
+# @Last modified time: 2020-05-05T20:42:34-04:00
 
 # Do a depth first search on a graph
 
@@ -64,3 +64,25 @@ def dfs_search(root_node, search_value):
         for child in node.children:
             if child not in visit_order:
                 stack.append(child)
+
+# Implement recursion DFS
+def dfs_recursion_start(self, start_node):
+    visited = {}
+    self.dfs_recursion(start_node, visited)
+
+def dfs_recursion(self, node, visited):
+    if node == None:
+        return False
+
+    visited[node.value] = True
+    print(node.value)
+
+    for child in node.children:
+        if child.value not in visited:
+            self.dfs_recursion(child, visited)
+
+Graph.dfs_recursion_start = dfs_recursion_start
+
+Graph.dfs_recursion = dfs_recursion
+
+graph1.dfs_recursion_start(nodeG)
