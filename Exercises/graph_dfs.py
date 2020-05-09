@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-05T20:56:09-04:00
+# @Last modified time: 2020-05-09T14:27:15-04:00
 
 # Do a depth first search on a graph
 
@@ -102,3 +102,32 @@ def bfs_search(root_node, search_value):
     for child in node.children:
         if child not in visited:
             queue.append(child)
+
+# Diijkstra's Algorithm
+class GraphEdge(object):
+    def __init__(self, node, distance):
+        self.node = node
+        self.distance = distance
+
+class GraphNode(object):
+    def __init__(self, value):
+        self.value = value
+        self.edges = []
+
+    def add_child(self, node, distance):
+        self.edges.append(GraphEdge(node, distance))
+
+    def remove_child(self, node):
+        if node in self.edges:
+            self.edges.remove(node)
+
+class Graph(object):
+    def __init__(self, node_list):
+        self.nodes = node_list
+
+    def add_edge(self, node1, node2, distance):
+        if node1 in self.nodes and node2 in self.nodes:
+            node1.add_child(node2, distance)
+            node2.add_child(node1, distance)
+
+    
