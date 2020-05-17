@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-09T14:31:06-04:00
+# @Last modified time: 2020-05-16T22:12:52-04:00
 
 # Do a depth first search on a graph
 
@@ -163,3 +163,15 @@ graph.add_edge(node_t, node_c, 5)
 graph.add_edge(node_t, node_y, 5)
 graph.add_edge(node_y, node_i, 4)
 graph.add_edge(node_y, node_t, 5)
+
+#Implementation Diijkstra's algorithm
+import math
+
+def dijkstra(start_node, end_node):
+    # Initialize dictionary with inf for distances
+    distances = {node: math.inf for node in graph.nodes}
+    short_paths = {}
+    distances[start_node] = 0
+    while distances:
+        c_node, node_d = sorted(distances.items(), key=lambda x: x[1])[0]
+        short_paths[c_node] = 
