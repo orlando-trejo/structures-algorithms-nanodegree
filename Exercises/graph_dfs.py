@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-16T22:12:52-04:00
+# @Last modified time: 2020-05-20T17:58:23-04:00
 
 # Do a depth first search on a graph
 
@@ -167,11 +167,20 @@ graph.add_edge(node_y, node_t, 5)
 #Implementation Diijkstra's algorithm
 import math
 
-def dijkstra(start_node, end_node):
+def dijkstra(start_node, end_node, graph):
     # Initialize dictionary with inf for distances
     distances = {node: math.inf for node in graph.nodes}
     short_paths = {}
     distances[start_node] = 0
     while distances:
-        c_node, node_d = sorted(distances.items(), key=lambda x: x[1])[0]
-        short_paths[c_node] = 
+        current_node, node_distance = sorted(distances.items(), key=lambda x: x[1])[0]
+        short_paths[current_node] = distances.pop(current_node)
+        for edge in current_node.edges:
+            if edge.node in distances:
+                new_node_distance = node_distance + edge.distance
+                if new_node_distance < distances[edge.node]:
+                    distances[edge.node] = new_node_distance
+
+    return short_paths[end_node]
+
+print('Shortest Distance from {} to {} is {}'.format(node_u.value, node_y.value, dijkstra(node_u, node_y, graph)))
