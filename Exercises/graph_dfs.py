@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-20T17:58:23-04:00
+# @Last modified time: 2020-05-20T18:17:07-04:00
 
 # Do a depth first search on a graph
 
@@ -184,3 +184,26 @@ def dijkstra(start_node, end_node, graph):
     return short_paths[end_node]
 
 print('Shortest Distance from {} to {} is {}'.format(node_u.value, node_y.value, dijkstra(node_u, node_y, graph)))
+
+
+# Connecting islands
+import heapq
+
+# Function to create graph
+def create_graph(num_islands, bridge_config):
+    # Initiate list of lists (adjacency list)
+    adjacency_list = [list() for _ in range(num_islands+1)]
+
+    # Create graph
+    for config in bridge_config:
+        i_island = config[0]
+        f_island = config[1]
+        cost = config[2]
+        adjacency_list[i_island].append((f_island, cost))
+        adjacency_list[f_island].append((i_island, cost))
+
+    return adjacency_list
+
+# Minimize cost
+def get_minimum_cost(graph):
+    
