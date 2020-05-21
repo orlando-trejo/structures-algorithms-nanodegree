@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-04T22:59:30-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-20T18:17:07-04:00
+# @Last modified time: 2020-05-20T22:21:41-04:00
 
 # Do a depth first search on a graph
 
@@ -192,18 +192,80 @@ import heapq
 # Function to create graph
 def create_graph(num_islands, bridge_config):
     # Initiate list of lists (adjacency list)
-    adjacency_list = [list() for _ in range(num_islands+1)]
+    graph = [list() for _ in range(num_islands+1)]
 
     # Create graph
     for config in bridge_config:
         i_island = config[0]
         f_island = config[1]
         cost = config[2]
-        adjacency_list[i_island].append((f_island, cost))
-        adjacency_list[f_island].append((i_island, cost))
+        graph[i_island].append((f_island, cost))
+        graph[f_island].append((i_island, cost))
 
-    return adjacency_list
+    return graph
 
 # Minimize cost
 def get_minimum_cost(graph):
-    
+    # Start vertex
+    vertex = 1
+    # Visited vertices
+    visited = [False for _ in range(len(graph))]
+    # Initialize heap
+    heap = [(0, vertex)]
+    total_cost = 0
+
+    while len(heap) > 0:
+        cost, current_vertex = heapq.heappop(heap)
+
+        if visited[current_vertex]:
+            continue
+
+        total_cost += cost
+
+        for island, cost in graph[current_vertex]:
+            heapq.heappush(heap, (cost, island))
+
+        visited[current_vertex] = True
+
+    return total_cost
+
+# Get minimum cost
+def get_minimum_cost_of_connecting(num_islands, bridge_config):
+    graph = create_graph(num_islands, bridge_config)
+    return get_minimum_cost(graph)
+
+# Test function
+def test_function(test_case):
+    num_islands = test_case[0]
+    bridge_config = test_case[1]
+    solution = test_case[2]
+    output = get_minimum_cost_of_connecting(num_islands, bridge_config)
+
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+# Test case 1
+num_islands = 4
+bridge_config = [[1, 2, 1], [2, 3, 4], [1, 4, 3], [4, 3, 2], [1, 3, 10]]
+solution = 6
+
+test_case = [num_islands, bridge_config, solution]
+test_function(test_case)
+
+# Test case 2
+num_islands = 5
+bridge_config = [[1, 2, 5], [1, 3, 8], [2, 3, 9]]
+solution = 13
+
+test_case = [num_islands, bridge_config, solution]
+test_function(test_case)
+
+# Test case 3
+num_islands = 5
+bridge_config = [[1, 2, 3], [1, 5, 9], [2, 3, 10], [4, 3, 9]]
+solution = 31
+
+test_case = [num_islands, bridge_config, solution]
+test_function(test_case)
