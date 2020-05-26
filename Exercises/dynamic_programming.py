@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-20T22:24:35-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-24T19:47:20-04:00
+# @Last modified time: 2020-05-25T22:55:31-04:00
 
 import collections
 
@@ -12,7 +12,15 @@ def max_value(knapsack_max_weight, items):
     """
     Get the maximum value of the knapsack.
     """
-    pass
+    lookup_table = [0] * (knapsack_max_weight + 1)
+
+    for item in items:
+        for capacity in reversed(range(knapsack_max_weight + 1)):
+            if item.weight <= capacity:
+                lookup_table[capacity] = max(lookup_table[capacity],
+                                             lookup_table[capacity-item.weight] + item.value)
+
+    return lookup_table[-1]
 
 
 
