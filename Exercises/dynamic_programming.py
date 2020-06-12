@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-05-20T22:24:35-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-05-30T13:40:53-05:00
+# @Last modified time: 2020-06-11T21:55:31-04:00
 
 import collections
 
@@ -79,3 +79,44 @@ print('LCS val 2 = ', lcs_val2)
 assert lcs_val2==7, "Incorrect LCS value."
 print('Tests passed!')
 # Complexity is O(N^2) due to two nested loops
+
+# Longest Palindromic Subsequence
+def lps(input_string):
+    len_string = len(input_string)
+    matrix = np.zeros((len_string, len_string))
+    np.fill_diagonal(matrix, 1)
+
+    for j in range(0, len_string):
+        for i in reversed(range(0, j)):
+            if input_string[i] == input_string[j]:
+                matrix[i,j] = matrix[i+1, j-1] + 2
+            if input_string[i] != input_string[j]:
+                matrix[i,j] = max(matrix[i+1, j], matrix[i, j-1])
+
+
+    print(matrix)
+    return (int(np.max(matrix)))
+
+def test_function(text_case):
+    string = test_case[0]
+    solution = test_case[1]
+    output = lps(string)
+    if output == solution:
+        print("Pass")
+    else:
+        print("Fail")
+
+string = "TACOCAT"
+solution = 7
+test_case = [string, solution]
+test_function(test_case)
+
+string = 'BANANA'
+solution = 5
+test_case = [string, solution]
+test_function(test_case)
+
+string = 'BANANO'
+solution = 3
+test_case = [string, solution]
+test_function(test_case)
