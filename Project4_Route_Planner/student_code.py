@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-06-28T22:39:09-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-06-28T23:39:12-04:00
+# @Last modified time: 2020-06-29T20:42:33-04:00
 
 
 import numpy as np
@@ -100,4 +100,33 @@ intersections = {0: [0.7801603911549438, 0.49474860768712914],
                  38: [0.17972981733780147, 0.999395685828547],
                  39: [0.6315322816286787, 0.7311657634689946]}
 
-print(get_distance(intersections, 0, 1))
+print(get_distance(intersections, 5, 32))
+print(get_distance(intersections, 5, 16))
+print(get_distance(intersections, 5, 14))
+print(get_distance(intersections, 32, 34))
+print(get_distance(intersections, 16, 34))
+print(get_distance(intersections, 14, 34))
+
+print('next round')
+print(get_distance(intersections, 16, 37))
+print(get_distance(intersections, 16, 30))
+print(get_distance(intersections, 16, 5))
+print(get_distance(intersections, 16, 14))
+print(get_distance(intersections, 37, 34))
+print(get_distance(intersections, 30, 34))
+print(get_distance(intersections, 5, 34))
+print(get_distance(intersections, 14, 34))
+
+print('next round')
+print(get_distance(intersections, 12, 37))
+print(get_distance(intersections, 12, 34))
+print(get_distance(intersections, 12, 31))
+print(get_distance(intersections, 12, 28))
+print(get_distance(intersections, 12, 22))
+print(get_distance(intersections, 12, 17))
+print(get_distance(intersections, 37, 34))
+print(get_distance(intersections, 34, 34))
+print(get_distance(intersections, 31, 34))
+print(get_distance(intersections, 28, 34))
+print(get_distance(intersections, 22, 34))
+print(get_distance(intersections, 17, 34))
