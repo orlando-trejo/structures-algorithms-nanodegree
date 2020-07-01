@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-06-28T22:39:09-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-06-29T20:42:33-04:00
+# @Last modified time: 2020-06-29T22:21:13-04:00
 
 
 import numpy as np
@@ -12,8 +12,36 @@ def get_distance(coords, pos_i, pos_f):
     return np.linalg.norm(vec_f - vec_i)
 
 
-def shortest_path(M,start,goal):
-    print("shortest path not called")
+def shortest_path(roads, intersections, start, goal):
+
+    lookup_table = np.array([[start], np.inf])
+    path = [start]
+
+    for road in roads[start]:
+        g = get_distance(intersections, start, road)
+        h = get_distance(intersections, road, goal)
+        f = g + h
+        print([[start, road], g, h, f])
+        lookup_table = np.vstack((lookup_table, [[start, road], f]))
+
+
+    min_i = np.argmin(lookup_table[:,1])
+    path.append(lookup_table[min_i][0][-1])
+
+    while goal not in lookup_table[min_i][0]:
+        start = lookup_table[min_i][0][-1]
+        for road in roads[start]:
+            g = get_distance(intersections, start, road)
+            h = get_distance(intersections, road, goal)
+            f = g + h
+            print([[start, road], g, h, f])
+            lookup_table = np.vstack((lookup_table, [[start, road], f]))
+
+        # Redefine min_i
+        min_i = np.argmin(lookup_table[:,1])
+        path.append(lookup_table[min_i][0][-1])
+
+    print(path)
     return
 
 
@@ -130,3 +158,6 @@ print(get_distance(intersections, 31, 34))
 print(get_distance(intersections, 28, 34))
 print(get_distance(intersections, 22, 34))
 print(get_distance(intersections, 17, 34))
+
+
+shortest_path(roads, intersections, 5, 34)
