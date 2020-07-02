@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-06-28T22:39:09-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-06-29T22:21:13-04:00
+# @Last modified time: 2020-07-01T23:24:00-04:00
 
 
 import numpy as np
@@ -128,12 +128,12 @@ intersections = {0: [0.7801603911549438, 0.49474860768712914],
                  38: [0.17972981733780147, 0.999395685828547],
                  39: [0.6315322816286787, 0.7311657634689946]}
 
-print(get_distance(intersections, 5, 32))
-print(get_distance(intersections, 5, 16))
-print(get_distance(intersections, 5, 14))
-print(get_distance(intersections, 32, 34))
-print(get_distance(intersections, 16, 34))
-print(get_distance(intersections, 14, 34))
+print(get_distance(intersections, 8, 33))
+print(get_distance(intersections, 8, 30))
+print(get_distance(intersections, 8, 14))
+print(get_distance(intersections, 33, 24))
+print(get_distance(intersections, 30, 24))
+print(get_distance(intersections, 14, 24))
 
 print('next round')
 print(get_distance(intersections, 16, 37))
@@ -160,4 +160,4 @@ print(get_distance(intersections, 22, 34))
 print(get_distance(intersections, 17, 34))
 
 
-shortest_path(roads, intersections, 5, 34)
+#hortest_path(roads, intersections, 5, 34)
