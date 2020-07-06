@@ -1,7 +1,7 @@
 # @Author: otrejo
 # @Date:   2020-06-28T22:39:09-04:00
 # @Last modified by:   otrejo
-# @Last modified time: 2020-07-05T20:30:31-04:00
+# @Last modified time: 2020-07-05T22:22:04-04:00
 
 
 import numpy as np
@@ -102,12 +102,21 @@ def get_distance(coords, pos_i, pos_f):
     vec_f = np.array(coords[pos_f])
     return np.linalg.norm(vec_f - vec_i)
 
-def generatePath(prev, start, goal):
-    curr = goal
-    path = [curr]
-    while curr != start:
-        curr = prev[curr]
-        path.append(curr)
+def path_list(came_from, start, goal):
+    '''
+    Function to list the found path from the
+    search algorithm from start to goal
+
+    Inputs: Dictionary of nodes and previous locations,
+    start node, and goal node
+
+    Output: List of the nodes that make up the found path
+    '''
+    path = [goal]
+    current = goal
+    while current != start:
+        current = came_from[current]
+        path.append(current)
     path.reverse()
     return path
 
@@ -140,7 +149,7 @@ def shortest_path(roads, intersections, start, goal):
 
         # Define case when goal is reached
         if current == goal:
-            generatePath(came_from, start, goal)
+            path_list(came_from, start, goal)
 
         # Calculate and update f = g + h
         for node in roads[current]:
@@ -152,7 +161,7 @@ def shortest_path(roads, intersections, start, goal):
                 frontier.put(node, f)
                 came_from[node] = current
 
-    return generatePath(came_from, start, goal)
+    return path_list(came_from, start, goal)
 
 print(shortest_path(roads, intersections, 5, 34))
 print(shortest_path(roads, intersections, 5, 5))
